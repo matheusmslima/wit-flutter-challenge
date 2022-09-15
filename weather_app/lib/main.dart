@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:weather_app/app/modules/home/views/home_view.dart';
 import 'package:weather_app/app/routes/app_pages.dart';
+import 'app/utils/app_colors.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,11 +14,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: AppColors.primary,
       ),
-      home: const HomeView(),
+      home: HomeView(),
       getPages: AppPages.routes,
     );
   }

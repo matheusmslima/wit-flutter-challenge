@@ -9,6 +9,7 @@ dependencies:
   get: ^4.6.5
   cupertino_icons: ^1.0.2
   http: 0.13.5
+  google_fonts: ^2.1.0
   flutter: 
     sdk: flutter
 
@@ -18,5 +19,11 @@ dev_dependencies:
     sdk: flutter
 
 flutter: 
+  fonts:
+    - family: Nexa
+      fonts:
+        - asset: assets/fonts/Nexa-Trial-Book.ttf
   uses-material-design: true
 
+
+  

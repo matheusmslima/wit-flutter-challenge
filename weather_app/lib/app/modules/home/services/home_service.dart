@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:http/http.dart' as http;
 import 'package:weather_app/app/models/city_response.dart';
 import 'package:weather_app/app/models/weather_response.dart';
@@ -9,31 +8,39 @@ class HomeService {
     double? latitude,
     double? longitude,
   ) async {
-    var weatherResponse = WeatherResponse();
-    var pathWeather =
-        'https://api.openweathermap.org/data/2.5/weather?lat=${latitude.toString()}&lon=${longitude.toString()}&appid=9e98583f00c6328ad78b90808e1127ee';
+    try {
+      var weatherResponse = WeatherResponse();
+      var pathWeather =
+          'https://api.openweathermap.org/data/2.5/weather?lat=${latitude.toString()}&lon=${longitude.toString()}&appid=9e98583f00c6328ad78b90808e1127ee';
 
-    var result = await http.get(Uri.parse(pathWeather));
+      var result = await http.get(Uri.parse(pathWeather));
 
-    if (result.statusCode == 200) {
-      weatherResponse = WeatherResponse.fromJson(jsonDecode(result.body));
+      if (result.statusCode == 200) {
+        weatherResponse = WeatherResponse.fromJson(jsonDecode(result.body));
+      }
+      return weatherResponse;
+    } catch (e) {
+      print(e);
+      return WeatherResponse();
     }
-
-    return weatherResponse;
   }
 
   Future<CityResponse> getCity(String name, String country) async {
-    var cityResponse = CityResponse();
-    var pathCity =
-        'http://api.positionstack.com/v1/forward?access_key=6f47d9ad2c3b3b1e390c7fb3583ed897&query=$name%20$country';
+    try {
+      var cityResponse = CityResponse();
+      var pathCity =
+          'http://api.positionstack.com/v1/forward?access_key=6f47d9ad2c3b3b1e390c7fb3583ed897&query=$name%20$country';
 
-    var result = await http.get(Uri.parse(pathCity));
+      var result = await http.get(Uri.parse(pathCity));
 
-    if (result.statusCode == 200) {
-      cityResponse = CityResponse.fromJson(jsonDecode(result.body));
+      if (result.statusCode == 200) {
+        cityResponse = CityResponse.fromJson(jsonDecode(result.body));
+      }
+      return cityResponse;
+    } catch (e) {
+      print(e);
+      return CityResponse();
     }
-
-    return cityResponse;
   }
 }
 
