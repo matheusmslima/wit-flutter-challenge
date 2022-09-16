@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/cities_weather/bindings/cities_weather_binding.dart';
+import '../modules/cities_weather/views/cities_weather_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 
@@ -25,5 +27,10 @@ class AppPages {
     //   ),
     //   binding: DetailsBinding(),
     // ),
+    GetPage(
+      name: Routes.CITIES_WEATHER,
+      page: () => CitiesWeatherView(),
+      binding: CitiesWeatherBinding(),
+    ),
   ];
 }
